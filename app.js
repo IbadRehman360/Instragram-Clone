@@ -16,7 +16,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: process.env.NODE_ENV,
         credentials: true,
     })
 );
@@ -33,7 +33,7 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
-const PORT = 4000;
+const PORT = process.env.PORT
 
 app.disable("x-powered-by");
 
