@@ -1,1 +1,1 @@
-export const api = "https://instragram-clone-one.vercel.app/";
+export const api = import.meta.env.VITE_API;

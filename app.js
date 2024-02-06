@@ -1,4 +1,3 @@
-
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -24,14 +23,14 @@ app.use(morgan("dev"));
 
 app.use(
     cors({
-        origin: "https://instragram-clone-one.vercel.app/",
+        origin: "http://localhost:5173",
         credentials: true,
     })
 );
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "./client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 require("./routes/auth.route")(app);
 require("./routes/post.route")(app);
@@ -41,7 +40,7 @@ require("./routes/user.route")(app);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
-const PORT = process.env.PORT || 3001;
+const PORT = 4000
 
 app.disable("x-powered-by");
 

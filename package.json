@@ -1,20 +1,38 @@
 {
-  "name": "my-mern-project",
-  "version": "1.0.0",
-  "description": "MERN Stack Project",
+  "name": "instagram-clone",
+  "version": "1.1.0",
+  "description": "Building an Instagram web app clone using MERN Stack ( MongoDB , Express.js , React.js , Node.js ) and bring some additional features",
+  "main": "app.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd server && npm start",
-    "client": "cd client && npm run dev" 
+    "start": "node app.js",
+    "prod": "cross-env NODE_ENV=production node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheLordA/Instagram-Clone.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "concurrently": "^8.2.2"
+  "bugs": {
+    "url": "https://github.com/TheLordA/Instagram-Clone/issues"
   },
-  "devDependencies": {},
-  "engines": {
-    "node": ">=14.17.0"
+  "homepage": "https://github.com/TheLordA/Instagram-Clone",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.6",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.12.6",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12"
   }
 }
