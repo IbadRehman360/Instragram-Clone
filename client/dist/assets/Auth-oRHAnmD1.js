@@ -1,0 +1,1 @@
+import{a as o,b as n}from"./axios-TBUHlTnk.js";const t=async s=>{try{return await o.post(n+"/signin",s)}catch(r){throw console.error("Error in loginApi:",r),r}},e=async s=>{try{return await o.post(n+"/signup",s)}catch(r){throw console.error("Error in signUpApi:",r),r}};export{e as a,t as s};
