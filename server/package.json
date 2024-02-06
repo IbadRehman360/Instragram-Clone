@@ -4,7 +4,7 @@
   "description": "Building an Instagram web app clone using MERN Stack ( MongoDB , Express.js , React.js , Node.js ) and bring some additional features",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon app",
+    "start": "node  app.js",
     "prod": "cross-env NODE_ENV=production node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
