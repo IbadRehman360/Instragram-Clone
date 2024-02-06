@@ -58,5 +58,23 @@ const UserService = {
       throw new Error("Error fetching user data");
     }
   },
+  getAllUsers: async () => {
+    try {
+      const token = localStorage.getItem("authToken");
+
+      const response = await axios.get(`${api}/allUser`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const users = response.data;
+      return users;
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw new Error("Error fetching users");
+    }
+  },
 };
 export default UserService;

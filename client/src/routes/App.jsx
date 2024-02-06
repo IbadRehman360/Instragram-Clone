@@ -24,8 +24,8 @@ export default function App() {
             <Route
               path={ROUTES.HOME}
               element={
-                <ProtectedRoute userToken={userToken}>
-                  <Route index element={<Home />} />
+                <ProtectedRoute userToken={userToken} path={ROUTES.LOGIN} exact>
+                  <Home />
                 </ProtectedRoute>
               }
             />

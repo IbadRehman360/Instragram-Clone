@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import { DEFAULT_IMAGE_PATH } from "../constants/paths";
 import { useState } from "react";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 export default function Header({ user, setIsOpen }) {
   const navigate = useNavigate();
@@ -9,8 +10,8 @@ export default function Header({ user, setIsOpen }) {
     <header className="h-20 pb-1 border-b border-gray-800 mb-8">
       <div className="container mx-auto max-w-screen-lg   h-full">
         <div className="flex justify-between h-full">
-          <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
-            <h1 className="flex justify-center w-full">
+          <div className="text-gray-700 text-center flex items-center  align-items cursor-pointer">
+            <h1 className="flex justify-center  w-96">
               <Link
                 to={ROUTES.HOME}
                 style={{ outline: "none" }}
@@ -19,8 +20,8 @@ export default function Header({ user, setIsOpen }) {
                 <img
                   src="/images/logo1.png"
                   alt="Instagram"
-                  className="mt-2 opacity-85  px-5 w-3/12"
-                />
+                  className="mt-2 opacity-85  px-5 w-6/12"
+                />{" "}
               </Link>
             </h1>
           </div>
@@ -38,7 +39,6 @@ export default function Header({ user, setIsOpen }) {
                     +
                   </button>
                 </div>
-
                 <Link to={ROUTES.HOME} aria-label="Dashboard">
                   <svg
                     className="w-8 mr-6 text-white cursor-pointer"
@@ -55,7 +55,6 @@ export default function Header({ user, setIsOpen }) {
                     />
                   </svg>
                 </Link>
-
                 <button
                   type="button"
                   title="Sign Out"
@@ -85,11 +84,17 @@ export default function Header({ user, setIsOpen }) {
                     />
                   </svg>
                 </button>
+                <div className="mr-8   text-white">
+                  <Link to={ROUTES.DASHBOARD} style={{ outline: "none" }}>
+                    <LuLayoutDashboard className="w-7 h-7    " />
+                  </Link>
+                </div>
+                ;
                 {user && (
                   <div className="flex items-center cursor-pointer">
-                    <Link to={`/p/${user?.Username}`}>
+                    <Link>
                       <img
-                        className="rounded-full  w-20  flex"
+                        className="rounded-full   w-10 flex"
                         src={`/images/avatars/steve.jpg`}
                         alt={`${user?.Username} profile`}
                         onError={(e) => {

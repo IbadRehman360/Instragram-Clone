@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { api } from "../../constants/api";
-import axios from "axios";
 import User from "./user";
 import Suggestions from "./suggestions";
+import UserService from "../../services/UserApi";
+import Header from "../header";
 
 export default function Sidebar({ user }) {
   const [userData, setUserData] = useState([]);
@@ -11,15 +11,7 @@ export default function Sidebar({ user }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = localStorage.getItem("authToken");
-
-        const response = await axios.get(`${api}/allUser`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
-        const users = response.data;
+        const users = await UserService.getAllUsers();
         setUserData(users);
         setLoading(false);
       } catch (error) {
@@ -36,7 +28,7 @@ export default function Sidebar({ user }) {
   }
   console.log(userData);
   return (
-    <div className="p-4 rounded-xl ml-4  bg-zinc-900 overflow-hidden h-96 ">
+    <div className="p-4 rounded-xl ml-4 bg-zinc-900 overflow-hidden h-80 justify-end min-h-content">
       <User userData={user} />
       <Suggestions loggedInUserDocId={user._id} userData={userData} />
     </div>

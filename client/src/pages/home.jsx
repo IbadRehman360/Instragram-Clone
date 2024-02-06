@@ -16,7 +16,7 @@ export default function Home({}) {
     <>
       <div className="bg-zinc-950  ">
         <Header user={user} setIsOpen={setIsOpen} />
-        <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
+        <div className="grid grid-cols-3 gap-8 justify-between mx-auto max-w-screen-lg">
           {isOpen && (
             <>
               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"></div>

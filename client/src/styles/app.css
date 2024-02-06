@@ -736,3 +736,7 @@ video {
 
 @media (min-width: 1536px) {
 }
+/* Add this in your styles or CSS file */
+.min-h-content {
+  min-height: fit-content;
+}
