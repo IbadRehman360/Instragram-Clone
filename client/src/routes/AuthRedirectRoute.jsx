@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function ProtectedRoute({ children, userToken, redirectTo }) {
+export function AuthRedirectRoute({ children, userToken, redirectTo }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userToken) {
-      navigate(redirectTo || "/login");
+    if (userToken) {
+      navigate(redirectTo || "/");
     }
   }, [userToken, navigate, redirectTo]);
 
-  return <>{userToken ? children : null}</>;
+  return <>{userToken ? null : children}</>;
 }

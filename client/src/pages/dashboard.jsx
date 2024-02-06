@@ -81,13 +81,11 @@ const Dashboard = () => {
           });
 
           post.Comments.forEach((comment) => {
-            if (usersEngagement[comment.PostedBy.$oid]) {
-              usersEngagement[comment.PostedBy.$oid].comments++;
+            const userId = comment.PostedBy.$oid;
+            if (usersEngagement[userId]) {
+              usersEngagement[userId].comments++;
             } else {
-              usersEngagement[comment.PostedBy.$oid] = {
-                likes: 0,
-                comments: 1,
-              };
+              usersEngagement[userId] = { likes: 0, comments: 1 };
             }
           });
 
@@ -98,31 +96,24 @@ const Dashboard = () => {
   const topEngagingUsers = Object.entries(userEngagement)
     .sort(([, a], [, b]) => b.likes + b.comments - (a.likes + a.comments))
     .slice(0, 10)
-    .map(([userId, engagement]) => ({
-      userId,
-      likes: engagement.likes,
-      comments: engagement.comments,
-    }));
-
-  console.log(topEngagingUsers);
+    .map(([userId, engagement]) => {
+      const user = userData.users.find((user) => user._id === userId);
+      return {
+        userId,
+        likes: engagement.likes,
+        comments: engagement.comments,
+        name: user ? user.Name : "Unknown User",
+      };
+    });
 
   return (
-    <div className="  bg-black  ">
+    <div className="bg-zinc-950     ">
       <Header user={user} setIsOpen={setIsOpen} />
-      <div className="grid grid-cols-3 gap-8 justify-between mx-auto max-w-screen-lg">
-        {isOpen && (
-          <>
-            <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2  -translate-y-1/2 z-50    ">
-              <CreatePost user={user} setIsOpen={setIsOpen} />
-            </div>
-          </>
-        )}
-      </div>
-      <div className="mx-auto mt-8 container">
-        <h1 className="text-3xl font-semibold mb-6">Dashboard</h1>
 
-        <div className="grid grid-cols-2 gap-8">
+      <div className="px-20 ">
+        <h1 className="text-3xl text-white font-semibold mb-6">Dashboard</h1>
+
+        <div className="grid grid-cols-2  gap-8 w-full">
           <TotalUsersMetric totalUsers={totalUsers} />
           <UsersLast2HoursMetric usersLast2Hours={usersLast2Hours} />
           <UsersWithMoreThanXFollowersMetric

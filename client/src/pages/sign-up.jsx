@@ -32,7 +32,8 @@ export default function SignUp() {
         localStorage.setItem("authToken", token);
         localStorage.setItem("userId", _id);
         setUser(userData);
-        navigate(ROUTES.HOME);
+        navigate("/");
+        window.location.reload();
       } else if (response.data.error) {
         setError(`${response.data.error} ` + emailAddress);
       } else {
@@ -55,7 +56,7 @@ export default function SignUp() {
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
       <div className="flex w-3/5">
         <img
-          src="/images/iphone-with-profile.jpg"
+          src="/images/iphone-with-profile.png"
           alt="iPhone with Instagram app"
         />
       </div>
