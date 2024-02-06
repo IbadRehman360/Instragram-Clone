@@ -31,6 +31,39 @@ exports.user = (req, res) => {
             return res.status(404).json({ Error: "User not found" });
         });
 };
+
+exports.allUser = (req, res) => {
+    User.find()
+        .select("-Password")
+        .then((users) => {
+            const userIds = users.map(user => user._id);
+
+            Post.find({ PostedBy: { $in: userIds } })
+                .populate("PostedBy", "_id Name")
+                .exec((err, result) => {
+                    if (err) {
+                        return res.status(422).json({ error: err });
+                    }
+
+                    const posts = result.map(item => ({
+                        _id: item._id,
+                        Title: item.Title,
+                        Body: item.Body,
+                        Photo: item.Photo.toString("base64"),
+                        PhotoType: item.PhotoType,
+                        Likes: item.Likes,
+                        Comments: item.Comments,
+                        Followers: item.Followers,
+                        Following: item.Following,
+                    }));
+
+                    res.json({ users, posts });
+                });
+        })
+        .catch((err) => {
+            return res.status(404).json({ Error: "Users not found", error: err });
+        });
+};
 exports.follow = async (req, res) => {
     const { user_id, postedUserId } = req.body;
     console.log("Following")

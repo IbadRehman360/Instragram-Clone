@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/header";
 import Timeline from "../components/timeline";
-// import Sidebar from "../components/sidebar";
-// import useUser from "../hooks/use-user";
+import Sidebar from "../components/sidebar";
 import { useUser } from "../context/user";
 import CreatePost from "../components/post/createPost";
 
@@ -15,7 +14,7 @@ export default function Home({}) {
 
   return (
     <>
-      <div className="bg-black  ">
+      <div className="bg-zinc-950  ">
         <Header user={user} setIsOpen={setIsOpen} />
         <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
           {isOpen && (
@@ -29,7 +28,7 @@ export default function Home({}) {
 
           <Timeline user={user} />
 
-          {/* <Sidebar />   */}
+          <Sidebar user={user} />
         </div>
       </div>
     </>

@@ -19,12 +19,13 @@ export default function Timeline({ user }) {
   return (
     <div className="container col-span-2">
       {posts
-        ? posts.map((post) => (
+        ? posts.map((post, index) => (
             <Post
               key={post._id}
               user={user}
               setPosts={setPosts}
               content={post}
+              i={index}
             />
           ))
         : null}

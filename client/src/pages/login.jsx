@@ -22,7 +22,7 @@ export default function Login() {
         localStorage.setItem("userId", _id);
         setUser(userData);
 
-        navigate(ROUTES.DASHBOARD);
+        navigate(ROUTES.HOME);
       } else {
         setError("Couldn't sign in with email address: " + emailAddress);
       }
@@ -76,14 +76,14 @@ export default function Login() {
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-blue-medium text-white w-full rounded h-8 font-bold
+              className={`bg-blue-600 text-white w-full rounded h-10  font-semibold  tracking-wider
             ${isInvalid && "opacity-50"}`}
             >
               Login
             </button>
           </form>
         </div>
-        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
+        <div className="flex justify-center items-center flex-col w-full bg-white   p-4 rounded border border-gray-primary">
           <p className="text-sm">
             Don't have an account?{` `}
             <Link to={ROUTES.SIGN_UP} className="font-bold text-blue-medium">

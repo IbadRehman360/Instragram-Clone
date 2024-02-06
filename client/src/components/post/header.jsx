@@ -10,6 +10,7 @@ export default function Header({
   setPosts,
   user,
   postedUserId,
+  i,
 }) {
   const [isOpen, setOpen] = useState(false);
   const [individualData, setindividualData] = useState([]);
@@ -62,7 +63,7 @@ export default function Header({
         <Link to={`/p/${username}`} className="flex items-center">
           <img
             className="rounded-full border border-gray-900 w-12  flex mr-3"
-            src={`/images/avatars/orwell.jpg`}
+            src={`/images/avatars/${i + 1}.jpg`}
             alt={`${username} profile picture`}
           />
           <p className="font-bold  text-white tracking-wide ">

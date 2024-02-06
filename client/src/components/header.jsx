@@ -12,7 +12,7 @@ export default function Header({ user, setIsOpen }) {
           <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
             <h1 className="flex justify-center w-full">
               <Link
-                to={ROUTES.DASHBOARD}
+                to={ROUTES.HOME}
                 style={{ outline: "none" }}
                 aria-label="Instagram logo"
               >
@@ -39,7 +39,7 @@ export default function Header({ user, setIsOpen }) {
                   </button>
                 </div>
 
-                <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                <Link to={ROUTES.HOME} aria-label="Dashboard">
                   <svg
                     className="w-8 mr-6 text-white cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ export default function Header({ user, setIsOpen }) {
                     <Link to={`/p/${user?.Username}`}>
                       <img
                         className="rounded-full  w-20  flex"
-                        src={`/images/avatars/raphael.jpg`}
+                        src={`/images/avatars/steve.jpg`}
                         alt={`${user?.Username} profile`}
                         onError={(e) => {
                           e.target.src = DEFAULT_IMAGE_PATH;

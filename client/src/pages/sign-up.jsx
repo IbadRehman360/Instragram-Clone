@@ -32,7 +32,7 @@ export default function SignUp() {
         localStorage.setItem("authToken", token);
         localStorage.setItem("userId", _id);
         setUser(userData);
-        navigate(ROUTES.DASHBOARD);
+        navigate(ROUTES.HOME);
       } else if (response.data.error) {
         setError(`${response.data.error} ` + emailAddress);
       } else {

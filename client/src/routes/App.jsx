@@ -8,8 +8,8 @@ import { UserProvider } from "../context/user";
 const Login = lazy(() => import("../pages/login"));
 const SignUp = lazy(() => import("../pages/sign-up"));
 const Home = lazy(() => import("../pages/home"));
-// const Profile = lazy(() => import("../pages/profile"));
 const NotFound = lazy(() => import("../pages/not-found"));
+const Dashboard = lazy(() => import("../pages/dashboard"));
 
 export default function App() {
   const userToken = localStorage.getItem("authToken");
@@ -21,15 +21,15 @@ export default function App() {
           <Routes>
             <Route path={ROUTES.LOGIN} element={<Login />} />
             <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
-            {/* <Route path={ROUTES.PROFILE} element={<Profile />} /> */}
             <Route
               path={ROUTES.HOME}
               element={
-                <ProtectedRoute userToken={userToken} path={ROUTES.LOGIN} exact>
-                  <Home />
+                <ProtectedRoute userToken={userToken}>
+                  <Route index element={<Home />} />
                 </ProtectedRoute>
               }
             />
+            <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </UserProvider>

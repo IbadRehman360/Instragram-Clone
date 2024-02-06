@@ -5,12 +5,13 @@ import Actions from "./actions";
 import Footer from "./footer";
 import Comments from "./comments";
 
-export default function Post({ content, user, setPosts }) {
+export default function Post({ content, user, setPosts, i }) {
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
   return (
     <div className="rounded-xl col-span-4 border bg-zinc-900 border-zinc-800 mb-12">
       <Header
+        i={i}
         docId={content._id}
         setPosts={setPosts}
         username={content.PostedBy.Name}
